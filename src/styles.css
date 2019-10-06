@@ -1,0 +1,111 @@
+.textCenter{
+    text-align:  center !important;
+}
+
+.MuiList-padding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; 
+}
+
+td {
+    text-align: center !important;
+    color: gray !important;
+}
+
+th{
+    text-align: center !important;
+    color: white !important;
+}
+
+.makeStyles-root-153 {
+    margin-top: 0px !important;
+}
+
+.deviceEditIconContainer{
+    border: 1px solid white !important;
+    border-radius: 50% !important;
+    padding: 5px !important;
+}
+
+.vAlignMiddle > * {
+    vertical-align: middle !important;
+}
+
+.width80{
+    width: 80% !important;
+}
+
+.padding10{
+    padding: 2rem !important;
+}
+
+.flexDisplay{
+    display: flex !important;
+}
+
+.maxHeight50{
+    max-height: 50px !important;
+}
+
+.marginBottom16{
+    margin-bottom: 16px !important;
+}
+
+.margin0{
+    margin: 0px !important;
+}
+
+.makeStyles-root-1 , main, .jss1{
+    max-width: 100% !important;
+}
+
+@media only screen and (max-width: 420px){
+    .MuiTableCell-root {
+        padding: 10px !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+@media only screen and (max-width: 324px){
+    .MuiTableCell-root {
+        padding: 8px !important;
+        font-size: 0.6rem !important;
+    }
+}
+
+@media only screen and (max-width: 276px){
+    .MuiTableCell-root {
+        padding: 6px !important;
+        font-size: 0.5rem !important;
+    }
+}
+
+@media only screen and (max-width: 280px){
+    .margin00 {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+}
+  
+
+
+
+@media only screen and (min-width: 600px){
+    .whiteText{
+        color: white !important;
+    }
+    
+    .borderBottom{
+        border-bottom: 0.5px solid rgba(224, 224, 224, 0.5) !important;
+    }
+    .MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft{
+        background: rgba(0,0,0,0) !important;
+    }
+    
+}
+
+@media only screen and (max-width: 600px){
+.borderBottom{
+    border-bottom: 0.5px solid rgba(40, 44, 52, 0.7) !important;
+}
+}
