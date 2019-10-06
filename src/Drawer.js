@@ -70,7 +70,9 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div className="maxW100">
-      <div className={classNames(classes.toolbar, "borderBottom")}/>
+      <div className={classNames(classes.toolbar, "borderBottom", "padding2", "maxH64", "textCenter")}>
+        <img src="images/Logo@2x.png" alt="Self Tunnel" className="maxH60"/>
+      </div>
       <List className="whiteText">
           <div>
             <ListItem button key="Devices" className={classNames("textCenter", "borderBottom")} onClick={handleDrawerToggle1}>

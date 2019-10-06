@@ -109,3 +109,15 @@ th{
     border-bottom: 0.5px solid rgba(40, 44, 52, 0.7) !important;
 }
 }
+
+.padding2{
+    padding: 2px !important;
+}
+
+.maxH64{
+    max-height: 64px !important;
+}
+
+.maxH60{
+    max-height: 60px !important;
+}
