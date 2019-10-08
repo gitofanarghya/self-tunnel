@@ -26,37 +26,39 @@ const styles = theme => ({
       root: {
         border: '1px solid gray !important',
         position: 'relative',
+        marginTop: '64px !important'
       },
       input:{
-          color: 'white',
+          color: '#546463',
       },
       closeIcon: {
         position: 'absolute',
         top: '10px',
         right: '10px',
+        color: '#546463'
       }
 });
 
 const CssTextField = withStyles({
     root: {
       '& label.Mui-focused': {
-        color: 'white',
+        color: '#546463',
       },
       '& label': {
-        color: 'white',
+        color: '#546463',
       },
       '& .MuiInput-underline:after': {
-        borderBottomColor: 'white',
+        borderBottomColor: '#546463',
       },
       '& .MuiOutlinedInput-root': {
         '& fieldset': {
-          borderColor: 'white',
+          borderColor: '#546463',
         },
         '&:hover fieldset': {
-          borderColor: 'white',
+          borderColor: '#546463',
         },
         '&.Mui-focused fieldset': {
-          borderColor: 'white',
+          borderColor: '#546463',
         },
       },
     },
@@ -84,6 +86,10 @@ function createData(port, status) {
   });
 
 class DeviceDetails extends React.Component{
+
+  getDeviceTunnels = (row) => { 
+    return row.name === this.props.selectedDevice;
+  }
     render(){
         var rootClasses = classNames({
             'padding10': true,
@@ -104,7 +110,7 @@ class DeviceDetails extends React.Component{
         return(
             <div className={classNames(classes.root, rootClasses)}>
                 <CloseIcon className={classes.closeIcon} onClick={this.props.closeDetails}/>
-                <h4 className={classNames("margin0", headingClasses)}>
+                <h4 className={classNames("margin0", headingClasses, "colorSecondary")}>
                     {this.props.selectedDevice}
                 </h4>
                 <div className={inputClasses}>
@@ -128,15 +134,15 @@ class DeviceDetails extends React.Component{
                 <Table className={classes.table} border="2">
                     <TableHead>
                         <TableRow>
-                        <TableCell><strong>Port</strong></TableCell>
-                        <TableCell align="right"><strong>Status</strong></TableCell>
+                        <TableCell><strong>Source Port</strong></TableCell>
+                        <TableCell align="right"><strong>Destination Port</strong></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => (
+                        {this.props.devices.find(this.getDeviceTunnels).tunnels.map(row => (
                         <TableRow key={row.name}>
-                            <TableCell align="right">{row.port}</TableCell>
-                            <TableCell align="right">{row.status}</TableCell>
+                            <TableCell align="right">{row.sourcePort}</TableCell>
+                            <TableCell align="right">{row.destinationPort}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
@@ -152,9 +158,11 @@ DeviceDetails.propTypes = {
   };
 
   const mapStateToProps = (state) => {
-    const { selectedDevice  } = state.routing
+    const { selectedDevice  } = state.routing;
+    const { devices } = state.device;
     return {
         selectedDevice,
+        devices
     };
   }
 

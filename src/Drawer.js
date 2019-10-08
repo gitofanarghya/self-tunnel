@@ -16,6 +16,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SpaceOccupier from './SpaceOccupier';
 import {connect} from 'react-redux';
 import { routingActions } from './_actions';
+import { Divider } from '@material-ui/core';
+import GroupIcon from '@material-ui/icons/Group';
+import AppsIcon from '@material-ui/icons/Apps';
 
 const drawerWidth = 240;
 
@@ -34,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
-    background: 'rgba(0,0,0,0)'
+    background: '#29A6A2',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -70,20 +73,26 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div className="maxW100">
-      <div className={classNames(classes.toolbar, "borderBottom", "padding2", "maxH64", "textCenter")}>
-        <img src="images/Logo@2x.png" alt="Self Tunnel" className="maxH60"/>
+      <div className={classNames(classes.toolbar, "borderBottom", "padding2", "maxH64", "textCenter", "logoDiv")}>
+        <img src="images/selftunnel-darkbg@2x.png" alt="Self Tunnel" className="maxH60"/>
+        <p className={classNames("margin0", "whiteText", "initialFont", "emailDisplay")}>vishnu@gmail.com</p>
       </div>
-      <List className="whiteText">
+      <Divider/>
+      <List>
           <div>
-            <ListItem button key="Devices" className={classNames("textCenter", "borderBottom")} onClick={handleDrawerToggle1}>
+            <ListItem button key="Devices" className={classNames( "borderBottom", "colorSecondary")} onClick={handleDrawerToggle1}>
+              <AppsIcon /> &nbsp; &nbsp;
               <ListItemText primary="Devices" />
             </ListItem>
           </div>
+          <Divider/>
           <div>
-            <ListItem button key="Accounts" className={classNames("textCenter", "borderBottom")}>
+            <ListItem button key="Accounts" className={classNames( "borderBottom", "colorSecondary")}>
+              <GroupIcon /> &nbsp; &nbsp;
               <ListItemText primary="Accounts" />
             </ListItem>
           </div>
+          <Divider/>
       </List>
     </div>
   );
@@ -152,6 +161,13 @@ ResponsiveDrawer.propTypes = {
    */
   container: PropTypes.instanceOf(typeof Element === 'undefined' ? Object : Element),
 };
+
+const mapStateToProps = (state) => {
+  const { email  } = state.auth
+  return {
+      email,
+  };
+}
 
 const mapDispatchToProps = (dispatch) => ({
   closeDetails: () => {

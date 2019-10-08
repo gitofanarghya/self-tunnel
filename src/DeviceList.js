@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
 import { routingActions } from './_actions';
+import { deviceActions } from './_actions';
 
 const styles = theme => ({
   root: {
@@ -33,6 +34,10 @@ const rows = [
 
 class DeviceList extends React.Component {
 
+  componentDidMount(){
+    this.props.getDevices();
+  }
+
   editDevice = (name) => {
     console.log(name);
     this.props.setOccupier('deviceDetails', name)
@@ -42,27 +47,29 @@ class DeviceList extends React.Component {
     const {classes} = this.props;
     return (
       <Paper className={classes.root}>
+        {this.props.receivedDevices ? 
         <Table className={classes.table} border="2">
           <TableHead>
             <TableRow>
               <TableCell><strong>Name</strong></TableCell>
-              <TableCell align="right"><strong>Mac ID</strong></TableCell>
+              <TableCell align="right"><strong>Device ID</strong></TableCell>
               <TableCell align="right"><strong>IP</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {this.props.devices.map(row => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row" className="vAlignMiddle">
                   {row.name} &nbsp;
                   <EditIcon className="deviceEditIconContainer" onClick={() => this.editDevice(row.name)}/>
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.deviceID}</TableCell>
+                <TableCell align="right">{row.tunnels.length}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        : null }
       </Paper>
     );
   }
@@ -73,11 +80,23 @@ DeviceList.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => {
+  const { accessToken } = state.auth;
+  const { devices, receivedDevices } = state.device;
+  return {
+    accessToken,
+    devices,
+    receivedDevices,
+  };
+}
 
 const mapDispatchToProps = (dispatch) => ({
   setOccupier: (occupier, name) => {
       dispatch(routingActions.setSpaceOccupier(occupier, name)) 
   },
+  getDevices: (accessToken) => {
+    dispatch(deviceActions.getDevices(accessToken))
+  },
 })
 
-export default  connect(null, mapDispatchToProps)(withStyles(styles, { withTheme: true })(DeviceList));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(DeviceList));

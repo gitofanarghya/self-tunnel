@@ -14,7 +14,7 @@ td {
 
 th{
     text-align: center !important;
-    color: white !important;
+    color: #546463 !important;
 }
 
 .makeStyles-root-153 {
@@ -22,7 +22,7 @@ th{
 }
 
 .deviceEditIconContainer{
-    border: 1px solid white !important;
+    border: 1px solid #546463 !important;
     border-radius: 50% !important;
     padding: 5px !important;
 }
@@ -90,7 +90,7 @@ th{
 
 
 
-@media only screen and (min-width: 600px){
+/* @media only screen and (min-width: 600px){
     .whiteText{
         color: white !important;
     }
@@ -108,16 +108,33 @@ th{
 .borderBottom{
     border-bottom: 0.5px solid rgba(40, 44, 52, 0.7) !important;
 }
-}
+} */
 
 .padding2{
     padding: 2px !important;
 }
 
-.maxH64{
-    max-height: 64px !important;
+.maxH60{
+    max-height: 75px !important;
 }
 
-.maxH60{
-    max-height: 60px !important;
+.logoDiv{
+    background: #546463;
+}
+
+.whiteText{
+    color: white !important;
+}
+
+.initialFont{
+    font-size: initial !important;
+}
+
+.colorSecondary{
+    color:  #546463 !important;
+}
+
+.emailDisplay{
+    padding-left: 1rem !important;
+    text-align: left !important;
 }
