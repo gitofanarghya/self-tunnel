@@ -43,7 +43,6 @@ function getAccessToken(refreshToken) {
 }
 
 function handleResponse(response) {
-    console.log(response, typeof(response));
     return response.json().then(json => {
         if (!response.ok) {
             if (response.status === 403) {

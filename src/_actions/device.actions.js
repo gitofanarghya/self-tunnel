@@ -11,27 +11,22 @@ function getDevices() {
         authServices.loginEmail("vishnu@astralpresence.in", "password")
             .then(
                 refreshToken => {
-                    console.log(refreshToken);
                     refreshToken = refreshToken.message;
                     var refreshToken1 = refreshToken.substring(2);
                     var refToken = refreshToken1.substring(0, refreshToken1.length - 1);
-                    console.log(refreshToken, refreshToken1, refToken);
                     authServices.getAccessToken(refToken)
                         .then(
                             accessToken => {
                                 accessToken = accessToken.message;
                                 var accessToken1 = accessToken.substring(2);
                                 var accToken = accessToken1.substring(0, accessToken1.length - 1);
-                                console.log(accToken);
                                 deviceServices.getDevices(accToken)
                                 .then(
                                     devices => { 
-                                        console.log(devices['message']);
                                         dispatch(success(devices['message']));
                                     },
                                     error => {
                                         dispatch(failure(error.toString()));
-                                        console.log(error);
                                     }
                                 ); 
                             }
