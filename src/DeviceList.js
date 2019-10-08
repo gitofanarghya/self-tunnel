@@ -53,7 +53,7 @@ class DeviceList extends React.Component {
             <TableRow>
               <TableCell><strong>Name</strong></TableCell>
               <TableCell align="right"><strong>Device ID</strong></TableCell>
-              <TableCell align="right"><strong>IP</strong></TableCell>
+              <TableCell align="right"><strong>Tunnels</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
